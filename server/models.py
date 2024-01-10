@@ -11,7 +11,7 @@ class Restaurant(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
 
-    foods_at_restaurant = db.relationship('FoodAtRestaurant', back_populates = 'restaurant')
+    foods_at_restaurant = db.relationship('FoodAtRestaurant', back_populates = 'restaurant', cascade = 'all,delete') # automatic cascading delete of dependent rows
 
 class Food(db.Model, SerializerMixin):
     __tablename__ = "foods"
